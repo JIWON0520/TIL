@@ -15,7 +15,7 @@
 
 but)결정 트리의 가장 큰 단점은 과적합으로 정확도가 떨어진다는 점이다. 따라서 파라미터를 사전에 튜닝해야 한다. (트리의 깊이를 제한 한다던지, 말단 노드가 되기위한 최소한의 샘플데이터를 늘인다던지 등)
 
-[결정트리 과적합 예제](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/892a8bc5-5ade-46c6-b7f9-8fefca5628d5/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210607%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210607T143026Z&X-Amz-Expires=86400&X-Amz-Signature=3e07cc88dc313dbe52dfd67573b25a60ed7f6125ae6f3ca3971e8267610ea2aa&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+[결정트리 과적합 예제](https://github.com/JIWON0520/TIL/blob/main/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/%EC%8B%A4%EC%8A%B5/%EA%B2%B0%EC%A0%95%ED%8A%B8%EB%A6%AC%20%EA%B3%BC%EC%A0%81%ED%95%A9%20%EC%8B%A4%EC%8A%B5.md)
 
 ![결정트리 이미지](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/892a8bc5-5ade-46c6-b7f9-8fefca5628d5/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210607%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210607T143026Z&X-Amz-Expires=86400&X-Amz-Signature=3e07cc88dc313dbe52dfd67573b25a60ed7f6125ae6f3ca3971e8267610ea2aa&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22){ width="60" height="60"}
 
