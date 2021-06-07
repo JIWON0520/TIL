@@ -1,0 +1,90 @@
+## 랜덤 포레스트 방식을 이용한 사용자 행동인식 분류 실습
+
+이전의 '결정 트리를 사용한 사용자 행동 인식 분류 실습'에서 사용한 데이터 세트 사용.
+
+[결정 트리를 사용한 사용자 행동 인식 분류 실습](https://github.com/JIWON0520/TIL/blob/main/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/%EC%8B%A4%EC%8A%B5/%EB%B6%84%EB%A5%98/%EA%B2%B0%EC%A0%95%20%ED%8A%B8%EB%A6%AC%EB%A5%BC%20%EC%82%AC%EC%9A%A9%ED%95%9C%20%EC%82%AC%EC%9A%A9%EC%9E%90%20%ED%96%89%EB%8F%99%20%EC%9D%B8%EC%8B%9D%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EC%84%B8%ED%8A%B8%20%EC%8B%A4%EC%8A%B5.md)
+
+```python
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score
+import pandas as pd
+import warnings
+warnings.filterwarnings('ignore')
+
+#결정 트리에서 사용한 get_human_dataset()을 이용해 학습/테스트용 DataFrame반환
+Xtrain,X_test,y_train,y_test=get_human_dataset()
+
+#랜덤 포레스트 학습 및 별도의 테스트 세트로 예측 성능 평가
+rf_clf=RandomForestClassifier(random_state=0)
+rf_clf.fit(X_train,y_train)
+pred=rf_clf.predict(X_test)
+accuracy=accuracy_score(y_test,pred)
+print('랜덤 포레스트 정확도 {0:.4f}'.format(accuracy))
+```
+
+[output]
+
+![결과](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/5e79c68c-ae12-44f5-b328-0d7256172a4e/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210607%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210607T160017Z&X-Amz-Expires=86400&X-Amz-Signature=605e6f09cc2b394388502d1241645cd687fe6084a6e8369516c40d6f62cb6b9d&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+
+랜덤 포레스트는 사용자 행동 인식 데이터 세트에 대해 약 92.53%의 정확도를 보여준다.
+
+이번에는 랜덤 포레스트의 하이퍼 파라미터를 튜닝하고 학습/예측을 수행해보자.
+
+```python
+from sklearn.model_selection import GridSearchCV
+
+params={
+    'n_estimators':[100],
+    'max_depth':[6,8,10,12],
+    'min_samples_leaf':[8,12,18],
+    'min_samples_split':[8,16,20]
+}
+
+#RandomForestClassifier 객체 생성 후 GridSearchCV 수행
+rf_clf=RandomForestClassifier(random_state=0,n_jobs=-1)
+grid_cv=GridSearchCV(rf_clf,param_grid=params, cv=2, n_jobs=-1)
+grid_cv.fit(X_train,y_train)
+
+print('최적 파라미터:\n',grid_cv.best_params_)
+print('최고 예측 정확도:{0:.4f}'.format(grid_cv.best_score_))
+```
+
+[output]
+
+![결과2](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/29f96ebd-6980-454b-8c1a-7f945334566c/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210607%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210607T160049Z&X-Amz-Expires=86400&X-Amz-Signature=2ceae202abb906f77d05782ed1ddb1a2ad3cc1862dfc8b7e3563e2f63b1d7a06&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+
+n_estimators가 100, max_depth:10, min_a=samples_Leaf:8, min_samples_split:8 일 때 약 91.80%의 정확도가 측정되었다. n_estimators를 300으로 증가시키고, 최적 하이퍼 파라미터로 다시 랜덤 포레스트를 학습 시틴 뒤 테스트 데이터 세트에서 예측 성능을 측정해 보자.
+
+```python
+rf_clf1=RandomForestClassifier(n_estimators=300, min_samples_leaf=8, min_samples_split=8, max_depth=10,random_state=0)
+rf_clf1.fit(X_train,y_train)
+pred=rf_clf1.predict(X_test)
+print('예측 정확도: {0:.4f}'.format(accuracy_score(y_test,pred)))
+```
+
+[output]
+
+![결과3](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/2771b5eb-dec9-48ca-a792-94d6d585c2a0/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210607%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210607T160124Z&X-Amz-Expires=86400&X-Amz-Signature=f75bf8551cd19cf599106da6b20aa048ef90d5a4c361630f78efc5d036ec895e&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+
+별도의 테스트 데이터 세트에서 수행한 예측 정확도 수치는 약 91.65%이다.
+
+마지막으로 피쳐 중요도를 막대 그래프로 시각화 해보자.
+
+```python
+import matplotlib.pyplot as plt
+import seaborn as sns
+%matplotlib inline
+
+ftr_importances_values=rf_clf1.feature_importances_
+ftr_importances=pd.Series(ftr_importances_values,index=X_train.columns)
+ftr_top20=ftr_importances.sort_values(ascending=False)[:20]
+
+plt.figure(figsize=(8,6))
+plt.title('Figure importances Top 20')
+sns.barplot(x=ftr_top20,y=ftr_top20.index)
+plt.show()
+```
+
+[output]
+
+![결과4](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/9724c531-bdf3-4a95-bd44-e6f6df14465a/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210607%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210607T160154Z&X-Amz-Expires=86400&X-Amz-Signature=dd2b8f300f77e7d76c792b3a57bc066b97e949a4ae7573e467d20d5c5d907f9e&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
