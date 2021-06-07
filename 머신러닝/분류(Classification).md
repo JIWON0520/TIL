@@ -3,6 +3,8 @@
 - 분류는 대표적인 지도학습의 유형이다.
 
 - 학습 데이터로 주어진 데이터로 주어진 데이터의 피쳐와 레이블값을 머신러닝 알고리즘으로 학습해 모델을 생성한 후, 생성된 모델에 새로운 데이터 값이 주어졌을 때 어떤 레이블 값을 갖는지 예측하는 것이다.
+
+
 # 결정트리
 
 - 결정트리는 ML알고리즘 중 직관적으로 이해하기 쉬운 알고리즘이다.
@@ -15,12 +17,14 @@
 
 but)결정 트리의 가장 큰 단점은 과적합으로 정확도가 떨어진다는 점이다. 따라서 파라미터를 사전에 튜닝해야 한다. (트리의 깊이를 제한 한다던지, 말단 노드가 되기위한 최소한의 샘플데이터를 늘인다던지 등)
 
-[결정트리 과적합 예제](https://github.com/JIWON0520/TIL/blob/main/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/%EC%8B%A4%EC%8A%B5/%EA%B2%B0%EC%A0%95%ED%8A%B8%EB%A6%AC%20%EA%B3%BC%EC%A0%81%ED%95%A9%20%EC%8B%A4%EC%8A%B5.md)
+[결정트리 과적합 예제](https://github.com/JIWON0520/TIL/blob/main/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/%EC%8B%A4%EC%8A%B5/%EB%B6%84%EB%A5%98/%EA%B2%B0%EC%A0%95%ED%8A%B8%EB%A6%AC%20%EA%B3%BC%EC%A0%81%ED%95%A9%20%EC%8B%A4%EC%8A%B5.md)
 
 ![결정트리 이미지](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/892a8bc5-5ade-46c6-b7f9-8fefca5628d5/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210607%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210607T143026Z&X-Amz-Expires=86400&X-Amz-Signature=3e07cc88dc313dbe52dfd67573b25a60ed7f6125ae6f3ca3971e8267610ea2aa&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
 - 결정트리를 시각화 한 모습 (자세한 실습과정은 밑의 링크 참조)
 
-[결정트리를 이용한 붓꽃분류 실습](https://www.notion.so/d0021f64d50142f0bdc2f49c9052bcab)
+[결정트리를 이용한 붓꽃분류 실습](https://github.com/JIWON0520/TIL/blob/main/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/%EC%8B%A4%EC%8A%B5/%EB%B6%84%EB%A5%98/%EA%B2%B0%EC%A0%95%ED%8A%B8%EB%A6%AC%EB%A5%BC%20%EC%9D%B4%EC%9A%A9%ED%95%9C%20%EB%B6%93%EA%BD%83%EB%B6%84%EB%A5%98%20%EC%8B%A4%EC%8A%B5.md)
+
+
 # 앙상블 학습
 
 - 앙상블 학습을 통한 분류는 여러 개의 분류기(Classifier)를 생성하고 그 예측을 결합함으로써 보다 정확한 최종 예측을 도출하는 기법을 말한다.
@@ -30,6 +34,7 @@ but)결정 트리의 가장 큰 단점은 과적합으로 정확도가 떨어진
 - 이미지나 영상 등의 비정형 데이터의 분류는 딥러닝이 뛰어난 성능을 보이고 있지만, 대부분의 정형 데이터 분류시에는 앙상블이 뛰어난 성능을 나타내고있다.
 
 - 앙상블의 유형에는 보팅(Voting), 배깅(Bagging), 부스팅(Boostiong)의 세가지로 나눌 수 있으며, 이외에도 스태킹을 포함한 다양한 앙상블 방법이 있다.
+
 
 ### 보팅(Voting)
 
@@ -41,31 +46,33 @@ but)결정 트리의 가장 큰 단점은 과적합으로 정확도가 떨어진
 
 - 사이킷런은 VotingClassifier 클래스를 제공함으로써 보팅 방식의 앙상블을 구현할 수 있다. (밑의 실습 참고)
 
-[보팅을 이용한 위스콘신 유방함 예측 분석](https://www.notion.so/6497957dbd2e492c8fb057f58129c8a5)
+  [보팅을 이용한 위스콘신 유방함 예측 분석](https://github.com/JIWON0520/TIL/blob/main/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/%EC%8B%A4%EC%8A%B5/%EB%B6%84%EB%A5%98/%EB%B3%B4%ED%8C%85%EC%9D%84%20%EC%9D%B4%EC%9A%A9%ED%95%9C%20%EC%9C%84%EC%8A%A4%EC%BD%98%EC%8B%A0%20%EC%9C%A0%EB%B0%A9%ED%95%A8%20%EC%98%88%EC%B8%A1%20%EB%B6%84%EC%84%9D.md)
 
 - 보팅으로 여러개의 분류기를 결합한다고 해서 무조건 개별 분류기보다 예측 성능이 향상되지 않는다. 데이터의 특성과 분포 등 다양한 요건에 따라 오히려 기반 분류기 중 가장 좋은 분류기의 성능이 보팅했을 때보다 나을 수 있다.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6090b115-f5f7-45ab-8216-b03c8f7923ad/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6090b115-f5f7-45ab-8216-b03c8f7923ad/Untitled.png)
+![보팅이미지](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/6090b115-f5f7-45ab-8216-b03c8f7923ad/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210607%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210607T160858Z&X-Amz-Expires=86400&X-Amz-Signature=84613a06d788e281550b970f9ad3d88253676c6495adab172d4f722d32322925&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+
 
 ### 배깅(Bagging)
 
-⇒배깅은 앞에서 소개한 보팅과는 다르게 같은 알고리즘(결정 트리)으로 여러개의 분류기를 만들어서 보팅으로 최종 결정하는 알고리즘이다. 
+- 배깅은 앞에서 소개한 보팅과는 다르게 같은 알고리즘(결정 트리)으로 여러개의 분류기를 만들어서 보팅으로 최종 결정하는 알고리즘이다. 
 
-⇒또한 각각의 분류기가 같은 학습데이터를 이용해 학습하는 보팅과 달리 배깅은 데이터 샘플링을 거쳐 학습을 수행한다.
+- 또한 각각의 분류기가 같은 학습데이터를 이용해 학습하는 보팅과 달리 배깅은 데이터 샘플링을 거쳐 학습을 수행한다.
 
-⇒대표적인 배깅 알고리즘은 랜덤 포레스트이다.
+- 대표적인 배깅 알고리즘은 **랜덤 포레스트**이다.
 
--랜덤 포레스트는 여러 개의 결정 트리 분류기가 전체 데이터에서 배깅 방식으로 각자의 데이터를 샘플링해 개별적으로 학습을 수행한 뒤 최종적으로 모든 분류기가 보팅을 통해 예측 결정을 한다.
+- 랜덤 포레스트는 여러 개의 결정 트리 분류기가 전체 데이터에서 배깅 방식으로 각자의 데이터를 샘플링해 개별적으로 학습을 수행한 뒤 최종적으로 모든 분류기가 보팅을 통해 예측 결정을 한다.
 
--랜덤 포레스트의 개별 분류기가 학습하는 데이터 세트는 전체 데이터에서 일부가 중첩되게 샘플링 된 데이터 세트이다. (부트스트래핑(bootstrappping)분할 방식)
+- 랜덤 포레스트의 개별 분류기가 학습하는 데이터 세트는 전체 데이터에서 일부가 중첩되게 샘플링 된 데이터 세트이다. (부트스트래핑(bootstrappping)분할 방식)
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/12c472df-8c09-49a7-9a6b-0c5dbfbb35ca/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/12c472df-8c09-49a7-9a6b-0c5dbfbb35ca/Untitled.png)
+![샘플링사진](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/12c472df-8c09-49a7-9a6b-0c5dbfbb35ca/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210607%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210607T161029Z&X-Amz-Expires=86400&X-Amz-Signature=e918c9d2cd36a1add5901b8129e6631da1fc9577e213db9dcb126174c4f08b8f&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/01975723-afb8-439e-89b6-8f281ea21a1a/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/01975723-afb8-439e-89b6-8f281ea21a1a/Untitled.png)
+![배깅이미지](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/01975723-afb8-439e-89b6-8f281ea21a1a/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210607%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210607T161113Z&X-Amz-Expires=86400&X-Amz-Signature=acaeef0c5c320995d40edaab6c8ecebfb66bf701375f2f597fea400d7f87bd14&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
 
-⇒사이킷런은 RandomForestClassifier 클래스를 통해 랜덤 포레스트 분류를 지원한다.(밑의 예제참고)
+- 사이킷런은 RandomForestClassifier 클래스를 통해 랜덤 포레스트 분류를 지원한다.(밑의 예제참고)
 
-[랜덤 포레스트 방식을 이용한 사용자 행동인식 분류 실습](https://www.notion.so/b028526fd58e4b1981f20043dcd3f4d7)
+  [랜덤 포레스트 방식을 이용한 사용자 행동인식 분류 실습](https://github.com/JIWON0520/TIL/blob/main/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/%EC%8B%A4%EC%8A%B5/%EB%B6%84%EB%A5%98/%EB%9E%9C%EB%8D%A4%20%ED%8F%AC%EB%A0%88%EC%8A%A4%ED%8A%B8%20%EB%B0%A9%EC%8B%9D%EC%9D%84%20%EC%9D%B4%EC%9A%A9%ED%95%9C%20%EC%82%AC%EC%9A%A9%EC%9E%90%20%ED%96%89%EB%8F%99%EC%9D%B8%EC%8B%9D%20%EB%B6%84%EB%A5%98%20%EC%8B%A4%EC%8A%B5.md)
+
 
 ### 부스팅(Booting)
 
