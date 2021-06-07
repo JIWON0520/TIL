@@ -1,8 +1,8 @@
 # 분류(Classification)란?
 
-⇒분류는 대표적인 지도학습의 유형이다.
+*분류는 대표적인 지도학습의 유형이다.
 
-⇒학습 데이터로 주어진 데이터로 주어진 데이터의 피쳐와 레이블값을 머신러닝 알고리즘으로 학습해 모델을 생성한 후, 생성된 모델에 새로운 데이터 값이 주어졌을 때 어떤 레이블 값을 갖는지 예측하는 것이다.
+*학습 데이터로 주어진 데이터로 주어진 데이터의 피쳐와 레이블값을 머신러닝 알고리즘으로 학습해 모델을 생성한 후, 생성된 모델에 새로운 데이터 값이 주어졌을 때 어떤 레이블 값을 갖는지 예측하는 것이다.
 # 결정트리
 
 ⇒결정트리는 ML알고리즘 중 직관적으로 이해하기 쉬운 알고리즘이다.
@@ -15,9 +15,9 @@
 
 but)결정 트리의 가장 큰 단점은 과적합으로 정확도가 떨어진다는 점이다. 따라서 파라미터를 사전에 튜닝해야 한다. (트리의 깊이를 제한 한다던지, 말단 노드가 되기위한 최소한의 샘플데이터를 늘인다던지 등)
 
-[결정트리 과적합 예제](https://www.notion.so/8257669a59084526a2901f5489ccb3ce)
+[결정트리 과적합 예제](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/892a8bc5-5ade-46c6-b7f9-8fefca5628d5/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210607%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210607T143026Z&X-Amz-Expires=86400&X-Amz-Signature=3e07cc88dc313dbe52dfd67573b25a60ed7f6125ae6f3ca3971e8267610ea2aa&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
 
-![결정트리 이미지](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/892a8bc5-5ade-46c6-b7f9-8fefca5628d5/Untitled.png)
+![결정트리 이미지](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/892a8bc5-5ade-46c6-b7f9-8fefca5628d5/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210607%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210607T143026Z&X-Amz-Expires=86400&X-Amz-Signature=3e07cc88dc313dbe52dfd67573b25a60ed7f6125ae6f3ca3971e8267610ea2aa&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22){ width="60" height="60"}
 
 ⇒결정트리를 시각화 한 모습 (자세한 실습과정은 밑의 링크 참조)
 
