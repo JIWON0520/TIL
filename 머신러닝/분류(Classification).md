@@ -84,7 +84,7 @@ but)결정 트리의 가장 큰 단점은 과적합으로 정확도가 떨어진
 
 ⇒에이다 부스트는 오류 데이터에 가중치를 부여하면서 부스팅을 수행하는 대표적인 알고리즘이다.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7491e9d2-86da-42fe-b40e-ced3a2cf86d6/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7491e9d2-86da-42fe-b40e-ced3a2cf86d6/Untitled.png)
+![에이다부스트](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/7491e9d2-86da-42fe-b40e-ced3a2cf86d6/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210608%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210608T153947Z&X-Amz-Expires=86400&X-Amz-Signature=509a2961bb9c4bc8ed9f19059834d1cfc6e3769cd38cfc77598b4d4261b987bd&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
 
 →옆의 그림에서 Model1은 +와 -를 기준1로 분류했지만 동그라미로 표시된 오류 데이터가 존재한다
 
@@ -104,7 +104,7 @@ but)결정 트리의 가장 큰 단점은 과적합으로 정확도가 떨어진
 
 ⇒사이킷런은 GBM기반 분류를 위해서 GradientBoostingClassifier 클래스를 제공한다. (예제는 밑의 링크 참고)
 
-[GBM을 이용한 사용자 행동인식 분류 실습](https://www.notion.so/GBM-7608d42f12234860a4260b471f7725db)
+[GBM을 이용한 사용자 행동인식 분류 실습](https://github.com/JIWON0520/TIL/blob/main/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/%EC%8B%A4%EC%8A%B5/%EB%B6%84%EB%A5%98/GBM%EC%9D%84%20%EC%9D%B4%EC%9A%A9%ED%95%9C%20%EC%82%AC%EC%9A%A9%EC%9E%90%20%ED%96%89%EB%8F%99%EC%9D%B8%EC%8B%9D%20%EB%B6%84%EB%A5%98%20%EC%8B%A4%EC%8A%B5.md)
 
 ### XGBoost(eXtra Gradient Boost)
 
@@ -118,7 +118,7 @@ but)결정 트리의 가장 큰 단점은 과적합으로 정확도가 떨어진
 
 ⇒지정된 반복 횟수가 아니라 교차 검증을 통해 평기 데이터세트의 평가 값이 최적화 되면 반복을 중간에 멈출 수 있는 조기 중단 기능이 있다.
 
-[XGBoost를 적용한 위스콘신 유방암 예측 실습](https://www.notion.so/XGBoost-79b38c0164474480827d024a43dab8d9)
+[XGBoost를 적용한 위스콘신 유방암 예측 실습](https://github.com/JIWON0520/TIL/blob/main/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/%EC%8B%A4%EC%8A%B5/%EB%B6%84%EB%A5%98/XGBoost%EB%A5%BC%20%EC%A0%81%EC%9A%A9%ED%95%9C%20%EC%9C%84%EC%8A%A4%EC%BD%98%EC%8B%A0%20%EC%9C%A0%EB%B0%A9%EC%95%94%20%EC%98%88%EC%B8%A1%20%EC%8B%A4%EC%8A%B5.md)
 
 ### LightGBM
 
@@ -130,9 +130,9 @@ but) LightGBM은 적은 데이터 세트에 적용할 결루 과적합이 발생
 
 ⇒LightGBM은 일반 GBM 계열의 트리 분할 방법과 다르게 리프 중심 트리분할 방식을 사용한다. 기존의 대부분 트리 기반 알고리즘은 트리의 깊이를 효과적으로 줄이기 위해 균형 트리분할 방식을 사용한다. 이렇게 균형잡힌 트리는 오버피팅에 보다 강한 구조를 가진다. 하지만 균형을 맞추기 위한 시간이 걸린다는 단점이 있다.
 
-[LightGBM을 적용한 위스콘신 유방암 예측 실습](https://www.notion.so/LightGBM-c63f54748a394f9d8f78b094dc992267)
+[LightGBM을 적용한 위스콘신 유방암 예측 실습](https://github.com/JIWON0520/TIL/blob/main/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/%EC%8B%A4%EC%8A%B5/%EB%B6%84%EB%A5%98/LightGBM%EC%9D%84%20%EC%A0%81%EC%9A%A9%ED%95%9C%20%EC%9C%84%EC%8A%A4%EC%BD%98%EC%8B%A0%20%EC%9C%A0%EB%B0%A9%EC%95%94%20%EC%98%88%EC%B8%A1%20%EC%8B%A4%EC%8A%B5.md)
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/fe67b4aa-d347-45a9-8b7e-8a7f2c15abcf/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/fe67b4aa-d347-45a9-8b7e-8a7f2c15abcf/Untitled.png)
+![LightGBM](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/fe67b4aa-d347-45a9-8b7e-8a7f2c15abcf/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210608%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210608T154020Z&X-Amz-Expires=86400&X-Amz-Signature=65e69114511bd350e29041dba05cd860edd21e3635829f63d1bf4f7d05300723&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
 
 ### 스태킹(Stacking)
 
