@@ -149,4 +149,5 @@ But)개별 알고리즘으로 예측한 데이터를 기반으로 다시 예측�
 ![CV기반 스태킹 모델](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/51ff51b9-f9b5-4fa0-ad41-901c757d8bdc/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210611%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210611T061750Z&X-Amz-Expires=86400&X-Amz-Signature=87e0b589d2f04b94d27c24b4a6dc368de03f76bb24a747943f73a81f567fbc84&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
 
 → CV기반 스태킹 모델
+
 [스태킹 모델을 이용한 위스콘신 암 예측 실습](https://github.com/JIWON0520/TIL/blob/main/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/%EC%8B%A4%EC%8A%B5/%EB%B6%84%EB%A5%98/%EC%8A%A4%ED%83%9C%ED%82%B9%20%EB%AA%A8%EB%8D%B8%EC%9D%84%20%EC%9D%B4%EC%9A%A9%ED%95%9C%20%EC%9C%84%EC%8A%A4%EC%BD%98%EC%8B%A0%20%EC%95%94%20%EC%98%88%EC%B8%A1%20%EC%8B%A4%EC%8A%B5.md)
