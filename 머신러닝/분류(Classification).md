@@ -142,10 +142,10 @@ But)개별 알고리즘으로 예측한 데이터를 기반으로 다시 예측�
 
 즉, 개별 알고리즘의 예측 결과 데이터세트를 최종적인 메타 데이터 세트로 만들어 별도의 ML알고리즘으로 최종 학습을 수행하고 테스트 데이터를 기반으로 다시 최종 예측을 수행하는 방식이다.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/00e5491a-dc0f-495a-a1fc-8939dc0f68c7/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/00e5491a-dc0f-495a-a1fc-8939dc0f68c7/Untitled.png)
+![기본 스태킹 모델](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/00e5491a-dc0f-495a-a1fc-8939dc0f68c7/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210611%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210611T061710Z&X-Amz-Expires=86400&X-Amz-Signature=0292e3670008d5e1e004f40e124e74f663ed5fe5a6c8773cf39236226cd3eaeb&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
 
 →기본 스태킹 모델
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/51ff51b9-f9b5-4fa0-ad41-901c757d8bdc/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/51ff51b9-f9b5-4fa0-ad41-901c757d8bdc/Untitled.png)
+![CV기반 스태킹 모델](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/51ff51b9-f9b5-4fa0-ad41-901c757d8bdc/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210611%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210611T061750Z&X-Amz-Expires=86400&X-Amz-Signature=87e0b589d2f04b94d27c24b4a6dc368de03f76bb24a747943f73a81f567fbc84&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
 
 → CV기반 스태킹 모델
