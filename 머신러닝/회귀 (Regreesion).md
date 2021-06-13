@@ -8,9 +8,9 @@
 
 * 지도학습은 두 가지 유형으로 나뉘는데, 바로 분류와 회귀이다.
 
-| 분류는 예측 값이 카테고리와 같은 이산형 클래스 값이다.
+* 분류는 예측 값이 카테고리와 같은 이산형 클래스 값이다.
 
-|회귀는 예측 값이 연속형 숫자 값이다.
+* 회귀는 예측 값이 연속형 숫자 값이다.
 
 ## 단순 선형 회귀를 통한 회귀 이해
 
@@ -22,7 +22,16 @@ ex)주택 가격이 주택의 크기로만 결정된다고 하자. 일반적으�
 
 오류 값은 +나 -값이 될 수 있다. 그래서 전체 데이터의 오류 합을 구하기 위해 단순히 더했다가는 뜻하지 않게 오류의 합이 크게 줄어들 수 있다. 따라서 보통 오류 합을 계산할때는 절댓값을 취해서 더하거나, 오류 값의 제곱을 구해서 더하는 방식(RSS)을 취한다. 즉 Error^2=RSS이다. 회귀에서 이 RSS는 비용(cost)이며, w변수(회귀 계수)로 구성되는 RSS를 비용함수라고 한다.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/242cf8fc-995c-46b3-95cb-2c0793a2865e/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/242cf8fc-995c-46b3-95cb-2c0793a2865e/Untitled.png)
+![선형회귀 이미지](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/5ceb2da1-048e-4fed-9683-859ce009964a/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210613%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210613T135752Z&X-Amz-Expires=86400&X-Amz-Signature=af8308fefcd94f5572af7b29202b4f1d72f745b17f7fd03937baee3664e56b3f&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+
+그렇다면 어떻게 비용함수가 최소가 되는 W파라미터를 구할 수 있을까? 정답은 경사하강법이다. 
+
+![경사하강법이미지](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/242cf8fc-995c-46b3-95cb-2c0793a2865e/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210613%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210613T135812Z&X-Amz-Expires=86400&X-Amz-Signature=d1ad1e95369af9fb1e4c57b914b87598a647a0770298c8a0637224a68b477257&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+
+
+예를 들어 비용함수가 다음 그림과 같은 포물선 형태의 2차 함수하면 경사 하강법은 최초 w에서부터 미분을 적용한 뒤 이 미분 값이 계속 감소하는 방향으로 순차적으로 w를 업데이트한다. 마침내 더 이상 미분된 1차 함수의 기울기가 감소하지 않는 지점을 비용 함수가 최소인 지점으로 간주하고 그때의 w를 반환한다.
+
+[파이썬으로 구현한 경사 하강법](https://github.com/JIWON0520/TIL/blob/main/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/%EC%8B%A4%EC%8A%B5/%ED%9A%8C%EA%B7%80/%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9C%BC%EB%A1%9C%20%EA%B5%AC%ED%98%84%ED%95%9C%20%EA%B2%BD%EC%82%AC%20%ED%95%98%EA%B0%95%EB%B2%95.md)
 
 ## LinearRrgression 클래스
 
@@ -34,6 +43,14 @@ LinearRegression 클래스는 예측값과 실제 값의 RSS를 최소화해 OLS
 
 이때문에 오류의 절댓값의 평균이나 제곱, 또는 제곱한 뒤 다시 루트를 씌운 평균값을 구한다.
 
+***회귀 평가 지표***
+
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b96a9d8a-2bed-4094-8cee-ac0167a05d5b/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b96a9d8a-2bed-4094-8cee-ac0167a05d5b/Untitled.png)
+
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d9eaf933-1083-4f3c-b79f-3f175aeb6dfe/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d9eaf933-1083-4f3c-b79f-3f175aeb6dfe/Untitled.png)
+
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9c21f277-3898-4a24-a940-dba8c151c53d/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9c21f277-3898-4a24-a940-dba8c151c53d/Untitled.png)
+
 ## 다항 회귀
 
 지금까지 설명한 회귀는 독립변수와 종속변수의 관계가 일차 방정식 형태로 표현된 회귀였다. 하지만 세상의 모든 관계를 직선으로만 표현할 수는 없다. 회귀가 독립변수의 단항식이아닌 2차, 3차 방정식과 같은 다항식으로 표현되는 것을 **다항 회귀**라고 한다. 
@@ -41,6 +58,8 @@ LinearRegression 클래스는 예측값과 실제 값의 RSS를 최소화해 OLS
 한 가지 주의할 점은 다항회귀는 선형 회귀라는 것이다. 회귀에서 선형/비선형 회귀를 나누는 기준은 회귀 계수가 선형/비선형인지에 따른 것이지 독립변수의 선형/비선형 여부와는 무관하다.
 
 ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c87be989-b69b-40be-a99e-8b536861164d/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c87be989-b69b-40be-a99e-8b536861164d/Untitled.png)
+
+사진에 주어진 데이터는 단항 회귀보다는 다항 회귀가 더 효과적이다.
 
 아쉽게도 사이킷런은 다항 회귀를 위한 클래스를 명시적으로 제공하지 않는다. 대신 다항 회귀 역시 선형 회귀이기 때문에 비선형 함수를 선형 모델에 적용시키는 방법을 사용해 구현한다. 이를 위해 사이킷런은 PolynomialFeatures 클래스를 통해 피처를 다항식 피처로 변환한다. 
 
@@ -64,11 +83,29 @@ LinearRegression 클래스는 예측값과 실제 값의 RSS를 최소화해 OLS
 
 ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b1d8d1ee-9537-4cd1-93ab-2e20dc7645e9/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b1d8d1ee-9537-4cd1-93ab-2e20dc7645e9/Untitled.png)
 
+그림 상단 왼쪽의 저편향/저분산은 예측 결과가 실제 결과에 매우 잘 근접하면서도 예측 변동이 크지 않고 큭정 부분에 집중돼 있는 아주 뛰어난 성능을 보여준다. 
+
+상단 오른쪽의 저편향/고분산은 예측 결과가 실제 결과에 비교적 근접하지만 예측 결과가 실제 결과를 중심으로 꽤 넓은 부분에 분포돼있다. 
+
+하단 왼쪽의 고편향/저분산은 정확한 결과에서 벗어나면서도 예측이 특정 부분에 집중되어있다. 
+
+마지막으로 하단 오른똑의 고편향/고분산은 정확한 예측 결과를 벗어나면서도 넓은 부분에 분포돼있다.
+
+일반적으로 편향과 분산은 한 쪽이 높으면 한 쪽이 낮아지는 경향이 있다. 
+
+즉 편향이 높으면 분산은 낮아지고 반대로 분산이 높으면 편향이 낮아진다.
+
+높은 편향/낮은 분산은 과소 적합에서 나타기 쉬우며, 낮은 편향/높은 분산에서 과적합이되기 쉽다. 
+
+편향과 분산이 서로 트레이드오프를 이루면서 오류 cost값이 최대로 낮아지는 모델을 구축하는 것이 가장 효율적인 머신러닝 예측 모델을 만드는 방법이다.
+
 ## 규제 선형 모델 - 릿지, 라쏘, 엘라스틱넷
 
 이전까지 선형 모델의 비용함수는 RSS를 최소화하는 , 즉 실제 값과 예측값의 차이를 최소화하는 것만 고려했다. 그러다 보니 학습 데이터에 지나치게 맞추게 되고, 회귀 계수가 쉽게 커졌다. 이럴 경우 변동성이 오히려 심해져서 테스트 데이터 세트에서는 예측 성능이 저하되기 쉽다.  이를 반영해 비용 함수는 학습 데이터의 진차 오류 값을 최소로하는 RSS최소화 방법과 과적합을 방지하기 위해 회귀 계수 값이 커지지 않도록 하는 방법이 서로 균형을 이뤄야 한다.
 
 이렇게 회귀 게수의 크기를 제어해 과적합을 개선하려면 비용함수의 목표가 다음과 같아야 한다.
+
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/77ac2af5-d55e-4743-8fb6-db8dbcaee896/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/77ac2af5-d55e-4743-8fb6-db8dbcaee896/Untitled.png)
 
 여기서 alpha는 학습 데이터 적합 정도와 회귀 계수 값의 크기 제어를 수행하는 튜닝 파라미터이다. 비용 함수의 목표가 ***Min*(*RSS*(*W*)+*alpha*∗∣∣*W*∣∣)**을 최소화 하는 W벡터를 찾는 것일 때 alpha가 어떤 역할을 하는지 살펴보자.
 
@@ -116,6 +153,8 @@ alpha가 0또는 매우 작은 값이라면 비용 함수 식은 기존과 동�
 
 [로지스틱 회귀를 이용한 위스콘신 유방암 여부 판단실습](https://www.notion.so/565752aab2b64a8ea55859e22382724a)
 
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/bc509c31-0c98-4dba-95f2-524cc660c50e/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/bc509c31-0c98-4dba-95f2-524cc660c50e/Untitled.png)
+
 ## 회귀 트리
 
 회귀 트리는 회귀 함수를 기반으로 하지 않고 결정 트리와 같이 트리를 기반으로 하는 회귀 방식이다. 즉, 회귀를 위한 트리를 생성하고 이를 기반으로 회귀 예측을 하는 것이다.
@@ -130,4 +169,8 @@ alpha가 0또는 매우 작은 값이라면 비용 함수 식은 기존과 동�
 
 모든 트리 기반의 알고리즘(결정 트리, 랜덤 포레스트, GBM 등)은 분류뿐만 아니라 회귀에도 적용가능하다.
 
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3f1e4119-00df-4ef8-a158-b6fa4b17abb5/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3f1e4119-00df-4ef8-a158-b6fa4b17abb5/Untitled.png)
+
 [회귀 트리를 이용한 보스턴 주택가격 예측](https://www.notion.so/967ceca2832e4ac5a4f30692386e3b84)
+
+[회귀 실습](https://www.notion.so/5fd52a3765ac4f6abf2d19224a7f6848)
