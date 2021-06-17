@@ -4,24 +4,24 @@
 
 #define STACK_MAX 100
 
-typedef int element; //½ºÅÃ ¿ø¼Ò(element)ÀÇ ÀÚ·áÇüÀ» int·Î Á¤ÀÇ
+typedef int element; //ìŠ¤íƒ ì›ì†Œ(element)ì˜ ìë£Œí˜•ì„ intë¡œ ì •ì˜
 
 element stack[STACK_MAX];
 int top = -1;
 
-//½ºÅÃÀÌ °ø¹é »óÅÂÀÎÁö È®ÀÎÇÏ´Â ¿¬»ê
+//ìŠ¤íƒì´ ê³µë°± ìƒíƒœì¸ì§€ í™•ì¸í•˜ëŠ” ì—°ì‚°
 int isEmpty() {
 	if (top == -1) return 1;
 	else return 0;
 }
 
-//½ºÅÃÀÌ Æ÷È­ »óÅÂÀÎÁö È®ÀÎÇÏ´Â ¿¬»ê
+//ìŠ¤íƒì´ í¬í™” ìƒíƒœì¸ì§€ í™•ì¸í•˜ëŠ” ì—°ì‚°
 int isFull() {
 	if (top == STACK_MAX - 1) return 1;
 	else return 0;
 }
 
-//½ºÅÃÀÇ top¿¡ ¿ø¼Ò¸¦ »ğÀÔÇÏ´Â ¿¬»ê
+//ìŠ¤íƒì˜ topì— ì›ì†Œë¥¼ ì‚½ì…í•˜ëŠ” ì—°ì‚°
 void push(element item) {
 	if (isFull()) {
 		printf("\n\n Stack is FULL!\n");
@@ -29,7 +29,7 @@ void push(element item) {
 	}
 	else stack[++top]=item;
 }
-//½ºÅÃÀÇ top¿¡¼­ ¿ø¼Ò¸¦ »èÁ¦ÇÏ´Â ¿¬»ê
+//ìŠ¤íƒì˜ topì—ì„œ ì›ì†Œë¥¼ ì‚­ì œí•˜ëŠ” ì—°ì‚°
 element pop() {
 	if (isEmpty()) {
 		printf("\n\n Stack is Empty!\n");
@@ -37,7 +37,7 @@ element pop() {
 	}
 	else return stack[top--];
 }
-//½ºÅÃÀÇ top¿ø¼Ò¸¦ °Ë»öÇÏ´Â ¿¬»ê
+//ìŠ¤íƒì˜ topì›ì†Œë¥¼ ê²€ìƒ‰í•˜ëŠ” ì—°ì‚°
 element peek() {
 	if (isEmpty()) {
 		printf("\n\n Stack is Empty!\n");
@@ -45,7 +45,7 @@ element peek() {
 	}
 	else return stack[top];
 }
-//½ºÅÃÀÇ ¿ø¼Ò¸¦ Ãâ·ÂÇÏ´Â ¿¬»ê
+//ìŠ¤íƒì˜ ì›ì†Œë¥¼ ì¶œë ¥í•˜ëŠ” ì—°ì‚°
 void printStack() {
 	int i;
 	printf("\n Stack[");
@@ -56,7 +56,7 @@ void printStack() {
 
 void main() {
 	element item;
-	printf("\n ** ¼øÂ÷ ½ºÅÃ ¿¬»ê **\n");
+	printf("\n ** ìˆœì°¨ ìŠ¤íƒ ì—°ì‚° **\n");
 	printStack();
 	push(1); printStack();
 	push(2); printStack();
