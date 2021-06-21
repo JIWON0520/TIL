@@ -45,11 +45,11 @@ LinearRegression 클래스는 예측값과 실제 값의 RSS를 최소화해 OLS
 
 ***회귀 평가 지표***
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b96a9d8a-2bed-4094-8cee-ac0167a05d5b/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b96a9d8a-2bed-4094-8cee-ac0167a05d5b/Untitled.png)
+![MAE](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/b96a9d8a-2bed-4094-8cee-ac0167a05d5b/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210621%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210621T135140Z&X-Amz-Expires=86400&X-Amz-Signature=dde4c7152e0d47be09f58b18a52f1400864ba65a70944d95c7d0fe07f8856939&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d9eaf933-1083-4f3c-b79f-3f175aeb6dfe/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d9eaf933-1083-4f3c-b79f-3f175aeb6dfe/Untitled.png)
+![MSE](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/d9eaf933-1083-4f3c-b79f-3f175aeb6dfe/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210621%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210621T135205Z&X-Amz-Expires=86400&X-Amz-Signature=157b40bfe4c1a583fddae3357364148406d72eb183c27dbc8c8e7b89fb1b95c3&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9c21f277-3898-4a24-a940-dba8c151c53d/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9c21f277-3898-4a24-a940-dba8c151c53d/Untitled.png)
+![RMSE](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/9c21f277-3898-4a24-a940-dba8c151c53d/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210621%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210621T135223Z&X-Amz-Expires=86400&X-Amz-Signature=1931dd4284ff509b8b14a56b0af0d3aa4a2fc24dc57f601d46bca0ed0973f52f&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
 
 ## 다항 회귀
 
@@ -57,7 +57,7 @@ LinearRegression 클래스는 예측값과 실제 값의 RSS를 최소화해 OLS
 
 한 가지 주의할 점은 다항회귀는 선형 회귀라는 것이다. 회귀에서 선형/비선형 회귀를 나누는 기준은 회귀 계수가 선형/비선형인지에 따른 것이지 독립변수의 선형/비선형 여부와는 무관하다.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c87be989-b69b-40be-a99e-8b536861164d/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c87be989-b69b-40be-a99e-8b536861164d/Untitled.png)
+![다항회귀](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/c87be989-b69b-40be-a99e-8b536861164d/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210621%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210621T135243Z&X-Amz-Expires=86400&X-Amz-Signature=a0bdbfc52fea1efa567672ca54324310ea13bdb57d28b5135e8288d59359cf64&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
 
 사진에 주어진 데이터는 단항 회귀보다는 다항 회귀가 더 효과적이다.
 
@@ -67,7 +67,7 @@ LinearRegression 클래스는 예측값과 실제 값의 RSS를 최소화해 OLS
 
 다항 회귀는 피처의 직선적 관계가 아닌 복잡한 다항 관계를 모델링할 수 있다. 다항식의 차수가 높아질수록 매우 복잡한 피처간의 관계까지 모델링 가능하다. 하지만 다항 회귀의 차수를 높일 수록 학습 데이터에만 너무 맞춘 학습이 이루어져서 정작 테스트 데이터 환경에서는 오히려 예측 정확도가 떨어진다. **즉, 차수가 높아질수록 과적합의 문제가 크게 발생한다.**
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0e99387b-f159-448a-9fd4-c4d923627877/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0e99387b-f159-448a-9fd4-c4d923627877/Untitled.png)
+![과소적합](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/0e99387b-f159-448a-9fd4-c4d923627877/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210621%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210621T135506Z&X-Amz-Expires=86400&X-Amz-Signature=30678290b4fdfcc2ac45145fcf8097e82aef3061a3a502b5ed2aaed29b72979b&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
 
 맨 왼쪽의 Degree 1예측 곡선은 단순항 직선으로서 선형 회귀와 똑같다. 실제 데이터 세트인 코사인 데이터 세트를 직선으로 예측하기에는 너무 단순해보인다. 예측 곡선이 학습 데이터의 패턴을 제대로 반영하지 못하고 있는 과소 적합 모델이 되었다.
 
@@ -77,11 +77,13 @@ LinearRegression 클래스는 예측값과 실제 값의 RSS를 최소화해 OLS
 
 결국 좋은 예측 모델은 Degree1 과 같이 학습 데이터의 패턴을 지나치게 단순화한 과소적합 모델도 아니고 Degree 15와 같이 모든 학습 데이터의 패던을 하나하나 감안한 지나치게 복잡한 과적합 모델도 아닌, 학습 데이터의 패턴을 잘 반영하면서도 복잡하지 않는 균형 잡힌 모델을 의미한다.
 
+[PolynomialFeature 클래스를 이용한 다항 회귀 구현](https://github.com/JIWON0520/TIL/blob/main/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/%EC%8B%A4%EC%8A%B5/%ED%9A%8C%EA%B7%80/PolynomialFeature%20%ED%81%B4%EB%9E%98%EC%8A%A4%EB%A5%BC%20%EC%9D%B4%EC%9A%A9%ED%95%9C%20%EB%8B%A4%ED%95%AD%20%ED%9A%8C%EA%B7%80%20%EA%B5%AC%ED%98%84.md)
+
 ### 편향-분산 트레이오프
 
 편향-분산 트레이오프는 머신러닝이 극복해야 할 가장 중요한 이슈 중의 하나이다. 앞의 Degree1과 같은 모델은 매우 단순화된 모델로서 지나치게 한 방향성으로 치우친 경향이 있다. 이런 모델은 고편향성을 가졌다고 표현한다. 반대로 Degree15와 같은 모델은 학습 데이터 하나하나의 특성을 반영하면서 매우 복잡한 모델이 되었고 지나치게 높은 변동성을 가지게 되었다. 이런 모델을 고분산성을 가졌다고 표현한다.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b1d8d1ee-9537-4cd1-93ab-2e20dc7645e9/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b1d8d1ee-9537-4cd1-93ab-2e20dc7645e9/Untitled.png)
+![편향-분산](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/b1d8d1ee-9537-4cd1-93ab-2e20dc7645e9/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210621%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210621T135530Z&X-Amz-Expires=86400&X-Amz-Signature=3ad992153c397ba051f046633a1a56def9d6985a377a129bc6edc339d0778534&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
 
 그림 상단 왼쪽의 저편향/저분산은 예측 결과가 실제 결과에 매우 잘 근접하면서도 예측 변동이 크지 않고 큭정 부분에 집중돼 있는 아주 뛰어난 성능을 보여준다. 
 
@@ -105,7 +107,7 @@ LinearRegression 클래스는 예측값과 실제 값의 RSS를 최소화해 OLS
 
 이렇게 회귀 게수의 크기를 제어해 과적합을 개선하려면 비용함수의 목표가 다음과 같아야 한다.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/77ac2af5-d55e-4743-8fb6-db8dbcaee896/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/77ac2af5-d55e-4743-8fb6-db8dbcaee896/Untitled.png)
+![비용함수](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/77ac2af5-d55e-4743-8fb6-db8dbcaee896/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210621%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210621T135553Z&X-Amz-Expires=86400&X-Amz-Signature=8a129b8c567a616699903f8d4098a6aff3ea82a73b60afa13871dbfc4c4c1490&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
 
 여기서 alpha는 학습 데이터 적합 정도와 회귀 계수 값의 크기 제어를 수행하는 튜닝 파라미터이다. 비용 함수의 목표가 ***Min*(*RSS*(*W*)+*alpha*∗∣∣*W*∣∣)**을 최소화 하는 W벡터를 찾는 것일 때 alpha가 어떤 역할을 하는지 살펴보자.
 
@@ -115,9 +117,9 @@ alpha가 0또는 매우 작은 값이라면 비용 함수 식은 기존과 동�
 
 이처럼 비용 함수에 alpha값으로 패널티를 부여해 회귀 계수 값의 크기를 감소시켜 과적합을 개선하는 방식을 규제라고한다. 규제는 크게 L2방식과 L1방식으로 구분된다. L2규제는 위에서 설명한 바와 같이 **alpha*||W||^2**와 같이 W의 제곱에 대해 패널티를 부여하는 방식을 말한다. 이 규제를 적용한 회귀를 릿지 회귀라고 한다. 라쏘 회귀는 L1규제를 적용한 회귀이다. L1규제는 **alpha*||W||**와 같이 W의 절댓값에 대해 패널티를 부여한다. L1규제를 적용하면 영향력이 크지 않은 회귀 계수 값을 0으로 변환한다.
 
-[릿지 회귀를 이용한 보스턴 주택가격 예측](https://www.notion.so/7ec7eaf3cbd14406845cb5a67b131037)
+[릿지 회귀를 이용한 보스턴 주택가격 예측](https://github.com/JIWON0520/TIL/blob/main/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/%EC%8B%A4%EC%8A%B5/%ED%9A%8C%EA%B7%80/Ridge%20Regression%EC%9C%BC%EB%A1%9C%20%EB%B3%B4%EC%8A%A4%ED%84%B4%20%EC%A3%BC%ED%83%9D%EA%B0%80%EA%B2%A9%20%EC%98%88%EC%B8%A1%ED%95%98%EA%B8%B0.md)
 
-[라쏘 회귀를 이용해 보스턴 주택 가격 예측하기](https://www.notion.so/a49b61b2ce67496195c90575b93b6776)
+[라쏘 회귀를 이용해 보스턴 주택 가격 예측하기](https://github.com/JIWON0520/TIL/blob/main/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/%EC%8B%A4%EC%8A%B5/%ED%9A%8C%EA%B7%80/Lasso%20Regression%EC%9D%84%20%EC%9D%B4%EC%9A%A9%ED%95%9C%20%EB%B3%B4%EC%8A%A4%ED%84%B4%20%EC%A3%BC%ED%83%9D%20%EA%B0%80%EA%B2%A9%20%EC%98%88%EC%B8%A1.md)
 
 ### 엘라스틱넷 회귀
 
