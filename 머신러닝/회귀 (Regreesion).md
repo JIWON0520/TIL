@@ -125,7 +125,7 @@ alpha가 0또는 매우 작은 값이라면 비용 함수 식은 기존과 동�
 
 엘라스틱넷 회귀는  L2규제와 L1규제를 결합한 회귀이다. 라쏘 회귀는 서로 상관관계가 높은 피처들의 경우에 이들 중에서 중요 피처만 셀렉션하고 다른 피처들은 모두 회귀 계수를 0으로 만드는 성향이 강하다. 엘라스틱넷 회귀는 이를 완화하기 위해 L2 규제를 라쏘 회귀에 추가한 것이다. 반대로 엘라스틱넷 회귀의 단점은 L1과 L2규제가 결합된 규제로 인해 수행시간이 상대적으로 오래 걸린다는 것이다.
 
-[엘라스틱넷 회귀를 이용한 보스턴 주택가격 예측 실습](https://www.notion.so/81233e78a9014586911b65766a0317af)
+[엘라스틱넷 회귀를 이용한 보스턴 주택가격 예측 실습](https://github.com/JIWON0520/TIL/blob/main/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/%EC%8B%A4%EC%8A%B5/%ED%9A%8C%EA%B7%80/ElasticNet%20Regression%EC%9D%84%20%EC%9D%B4%EC%9A%A9%ED%95%9C%20%EB%B3%B4%EC%8A%A4%ED%84%B4%20%EC%A3%BC%ED%83%9D%EA%B0%80%EA%B2%A9%20%EC%98%88%EC%B8%A1%20%EC%8B%A4%EC%8A%B5.md)
 
 ## 선형 회귀 모델을 위한 데이터 변환
 
@@ -147,15 +147,15 @@ alpha가 0또는 매우 작은 값이라면 비용 함수 식은 기존과 동�
 
 시그모이드 함수의 정의는 다음과 같다.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4e12eccb-18bc-43b9-b37f-82decc1fba44/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4e12eccb-18bc-43b9-b37f-82decc1fba44/Untitled.png)
+![시그모이드 함수](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/4e12eccb-18bc-43b9-b37f-82decc1fba44/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210622%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210622T124313Z&X-Amz-Expires=86400&X-Amz-Signature=1d6d65812b5b89cc8c5c4f3f13f31eec13c9d68d4c9f23874a742660954538e1&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
 
 시그모이드 함수는 x값이 +,-로 아무리 커지거나 작아져고 y값은 항상 0과 1사이 값을 반환한다.
 
 다음 사진과 같이 왼쪽의 선형 회귀는 0과 1일 제대로 분류하지 못하고 있지만 오른쪽의 시그모이드 함수를 이용하면 좀 더 정확하게 0과 1에 대해 분류를 할 수 있음을 알 수 있다. 로지스틱 회귀는 이처럼 선형 회귀 방식을 기반으로 하되 시그모이드 함수를 이용해 분류를 수행하는 회귀이다. 
 
-[로지스틱 회귀를 이용한 위스콘신 유방암 여부 판단실습](https://www.notion.so/565752aab2b64a8ea55859e22382724a)
+[로지스틱 회귀를 이용한 위스콘신 유방암 여부 판단실습](https://github.com/JIWON0520/TIL/blob/main/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/%EC%8B%A4%EC%8A%B5/%ED%9A%8C%EA%B7%80/Logistic%20Regression%EC%9D%84%20%EC%9D%B4%EC%9A%A9%ED%95%9C%20%EC%9C%84%EC%8A%A4%EC%BD%98%EC%8B%A0%20%EC%9C%A0%EB%B0%A9%EC%95%94%20%EC%97%AC%EB%B6%80%20%ED%8C%90%EB%8B%A8%EC%8B%A4%EC%8A%B5.md)
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/bc509c31-0c98-4dba-95f2-524cc660c50e/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/bc509c31-0c98-4dba-95f2-524cc660c50e/Untitled.png)
+![시그모이드 그래프](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/bc509c31-0c98-4dba-95f2-524cc660c50e/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210622%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210622T124343Z&X-Amz-Expires=86400&X-Amz-Signature=58a3eb9c2dba206202839997d4c193cf4b0db62c913b1c9ca711be58df2ced55&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
 
 ## 회귀 트리
 
@@ -171,8 +171,7 @@ alpha가 0또는 매우 작은 값이라면 비용 함수 식은 기존과 동�
 
 모든 트리 기반의 알고리즘(결정 트리, 랜덤 포레스트, GBM 등)은 분류뿐만 아니라 회귀에도 적용가능하다.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3f1e4119-00df-4ef8-a158-b6fa4b17abb5/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3f1e4119-00df-4ef8-a158-b6fa4b17abb5/Untitled.png)
+![회귀트리 이미지](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/3f1e4119-00df-4ef8-a158-b6fa4b17abb5/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210622%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210622T124443Z&X-Amz-Expires=86400&X-Amz-Signature=8cfcdd68eecfdd01e46eabd844271c9b0a4f35595b5c5ac5cf1915022d60eee9&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
 
 [회귀 트리를 이용한 보스턴 주택가격 예측](https://www.notion.so/967ceca2832e4ac5a4f30692386e3b84)
 
-[회귀 실습](https://www.notion.so/5fd52a3765ac4f6abf2d19224a7f6848)
