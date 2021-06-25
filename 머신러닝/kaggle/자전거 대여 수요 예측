@@ -1,0 +1,301 @@
+## 자전거 대여 수요 예측
+
+캐글의 자전거 대여 수요 예측 경연에서 사용된 학습 데이터 세트를 이용해 선형 회귀와 트리 기반 회귀를 비교해 보자.
+
+해당 데이터 세트의 주요 칼럼 값은 다음과 같다.
+
+- datetime : hourly date+ timestamp
+- season : 1=봄,2=여름,3=가을,4=겨울
+- holiday : 1=토,일요일의 주말을 제외한 국경일 등의 휴일, 0=휴일이 아닌 날
+- workingday : 1=토,일요일의 주말 및 휴일이 아닌 주중, 0=주말 및 휴일
+- weather : 1=맑은,약간 구름 낀 흐림, 2=안개,안개+흐림,3=가벼운 눈, 가벼운 지+천둥,4=심한 눈/비, 천둥/번개
+- temp:온도(섭씨)
+- atemp:체감온도(섭씨)
+- humidity:상대습도
+- windspeed:풍속
+- casual:사전에 등록되지 않은 사용자가 대여한 횟구
+- registered:사전에 등록된 사용자가 대여한 횟수
+- count:대여 횟수
+
+데이터 세트를 로드해 대략적으로 데이터를 확인해 보자.
+
+```python
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+%matplotlib inline
+import warnings
+warnings.filterwarnings("ignore",category=RuntimeWarning)
+
+bike_df=pd.read_csv("/content/drive/MyDrive/Colab Notebooks/bike_sharing-demand/train.csv")
+print(bike_df.shape)
+bike_df.head()
+```
+
+[output]
+
+![결과1](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/6f91bfb6-5bc5-475c-9c75-cefb02dd442f/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210625%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210625T051108Z&X-Amz-Expires=86400&X-Amz-Signature=63287bebb6fa09f6e7619ce9350bb5f635cc40bb0c692f56817d531bf475adf9&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+
+해당 데이터 세트는 10886개의 레코드와 12개의 칼럼으로 구성되어 있다.
+
+데이터 칼럼의 타입을 살펴보자.
+
+```python
+bike_df.info()
+```
+
+[output]
+
+![결과2](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/ec01ec41-16c5-4962-bc99-d25d9bcc4e7f/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210625%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210625T051356Z&X-Amz-Expires=86400&X-Amz-Signature=9ad4f48cc54f88f4b65c8b539be48e9ddf85650cdc2972449f7017f7e3b413d3&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+
+10886갸의 로우 데이터 중 NULL값은 없으며, 대부분의 칼럼이 int 또는 float인데 datetime 칼럼만 object 형이다. Datetime 칼럼의 경우 년-월-일 시:분:초 문자 형식으로 돼 있으므로 이에 대한 가공이 필요하다. 파나스는 datetime과 같은 형태의 문자열을 년도,월,일,시간,분,초로 편리하게 변환하려면 문자열은 'datetime'으로 변경해야 한다. 
+
+Datetime 칼럼에서 년,월,일,시간 칼럼을 추출해보자.
+
+```python
+#문자열을 datetime 타입으로 변경
+bike_df['datetime']=bike_df.datetime.apply(pd.to_datetime)
+
+#datetime 타입에서 년,월,일,시간 추출
+bike_df['year']=bike_df.datetime.apply(lambda x: x.year)
+bike_df['month']=bike_df.datetime.apply(lambda x: x.month)
+bike_df['day']=bike_df.datetime.apply(lambda x: x.day)
+bike_df['hour']=bike_df.datetime.apply(lambda x: x.hour)
+bike_df.head()
+```
+
+[output]
+
+![결과3](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/945dc884-6074-47d0-94a1-cec11632cc73/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210625%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210625T051426Z&X-Amz-Expires=86400&X-Amz-Signature=f1d0550a5d0e842788f939295499fee36a47962e43b49467eb1099b6b0470d04&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+
+새롭게 year,month,day,hour 칼럼이 추가되었다.
+
+이제 datetime 칼럼은 삭제하겠다. 또한 casual 칼럼은 사전에 등록하지 않는 사용자의 자전거 대여 횟수이고, registered는 사전에 등록한 사용자의 대여 횟수이므로 casual+registered=count이다. 따라서 casual과 registered 칼럼을 삭제하겠다.
+
+```python
+drop_columns=['datetime','casual','registered']
+bike_df.drop(drop_columns,axis=1,inplace=True)
+```
+
+캐글에서 요구한 성능 평가 방법은 RMSLE이다. 즉 오류 값의 로그에 대한 RMSE이다. 사이킷런에는 RMSLE를 제공하지 않아서 RMSLE를 수행하는 성능 평가 함수를 직접 만들어 보자.
+
+```python
+from sklearn.metrics import mean_squared_error,mean_absolute_error
+
+#log값 변환 시 NaN등의 이유로 log()가 아닌 log1p()를 이용해 RMSLE 계산
+def rmsle(y,pred):
+  log_y=np.log1p(y)
+  log_pred=np.log1p(pred)
+  squared_error=(log_y-log_pred)**2
+  rmsle=np.sqrt(np.mean(squared_error))
+  return rmsle 
+
+#사이킷런의 mean_squared_error()를 이용해 RMSE계산
+def rmse(y,pred):
+  return np.sqrt(mean_squared_error(y,pred))
+
+#MAE,RMSE,RSMLE를 모두 계산
+def  evaluate_regr(y,pred):
+  rmsle_val=rmsle(y,pred)
+  rmse_val=rmse(y,pred)
+  #MAE는 사이킷런의 mean_absolute_error()로 계산
+  mae_val=mean_absolute_error(y,pred)
+  print('RMSLE:{0:.3f}, RMSE:{1:.3f}, MAE:{2:.3f}'.format(rmsle_val,rmse_val,mae_val))
+```
+
+이제 회귀 모델을 이용해 자전거 대여 횟수를 예측해 보겠다.
+
+먼저 LinearRegression 객체를 이용해 회귀 예측을 해보고, 결과값이 정규 분포로 돼 있는지 확인하고, 카테고리형 회귀 모델의 결루 원-핫 인코딩으로 피처를 인코딩해 보자.
+
+```python
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression,Ridge,Lasso
+
+y_target=bike_df['count']
+X_features=bike_df.drop(['count'],axis=1,inplace=False)
+
+X_train,X_test,y_train,y_test=train_test_split(X_features,y_target,test_size=0.3,random_state=0)
+
+lr_reg=LinearRegression()
+lr_reg.fit(X_train,y_train)
+pred=lr_reg.predict(X_test)
+
+evaluate_regr(y_test,pred)
+```
+
+[output]
+
+RMSLE:1.165, RMSE:140.900, MAE:105.924
+
+실제 Target 데이터 값인 대여 횟수를 감안하면 예측 오류로서는 비교적 큰 값이다.
+
+실제 값과 예측 값이 어느 정도 차이가 나는지 DataFrame의 칼럼으로 만들어서 오류 값이 가장 큰 순으로 5개만 확인해 보자.
+
+```python
+def get_top_error_data(y_teat,pred,n_tops=5):
+  #DataFrame의 칼럼으로 실제 대여 횟수(count)와 예측값을 서로 비교할 수 있도록 생성
+   result_df=pd.DataFrame(y_test.values,columns=['real_count'])
+   result_df['predicted_count']=np.round(pred)
+   result_df['diff']=np.abs(result_df['real_count']-result_df['predicted_count'])
+   #예측 값과 실제 값이 가장 큰 데이터 순으로 출력
+   print(result_df.sort_values('diff',ascending=False)[:n_tops])
+
+        
+get_top_error_data(y_test,pred,n_tops=5)
+```
+
+[output]
+
+![결과5](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/4ae2eeef-f2aa-4062-91ec-25216b0ecb97/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210625%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210625T051508Z&X-Amz-Expires=86400&X-Amz-Signature=0dfd051e97599a01892a12dd3c24d0d5238c6a8cdae4b3adcae1b5d3b7ebf6d3&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+
+가장 큰 상위 5위 오류 값은 546~568로 실제 값을 감안하면 예측 오류가 꽤 크다. 회귀에서 이렇게 큰 예측 오류가 발생할 경우 가장 먼저 살펴볼 것은 Target값의 분포가 왜곡된 형태를 이루고 있는지이다.
+
+Target 값인 count 칼럼의 분표를 살펴보자.
+
+```python
+y_target.hist()
+```
+
+[output]
+
+![결과6](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/aa62afc6-9661-4724-8aa1-835b35541cdb/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210625%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210625T051548Z&X-Amz-Expires=86400&X-Amz-Signature=b3224906c01cd8c59f97aaf2ea5621f25b6236af93d4688fad94f53baf76f692&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+
+count 칼럼 값이 정규 분포가 아닌 0~200사이에 왜곡돼 있는 것을 알 수 있다. 이렇게 왜곡 된 분포값을 정규 분포 형태로 바꾸는 가장 일반적인 방법은 로그를 적용해 변환하는 것이다.
+
+로그 변환을 적용한 count 칼럽 값의 분포를 살펴보자.
+
+```python
+y_log_transform=np.log1p(y_target)
+y_log_transform.hist()
+```
+
+[output]
+
+![결과7](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/596b4edd-15e5-41f2-aec8-5a374cb036f6/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210625%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210625T051613Z&X-Amz-Expires=86400&X-Amz-Signature=83f79a8a659d79418b9ba89de936bd7a4e030c01528ad63a914685490cc00bb8&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+
+로그로 Target 값을 변환한 후에 원하는 정규 분포 형태는 아니지만 변환하기 전보다는 왜곡 정도가 많이 향상되었다.
+
+이를 이용해 다시 학습한 후 평가를 수행해 보자.
+
+```python
+#타깃 칼럼인 count 값을 log1p로 로그 변환
+y_target_log=np.log1p(y_target)
+
+#로그 변환된 y_target_lpg를 반영해 학습/테스트 데이터 세트 분할
+X_train,X_test,y_train,y_test=train_test_split(X_features,y_target_log,test_size=0.3,random_state=0)
+
+lr_reg=LinearRegression()
+lr_reg.fit(X_train,y_train)
+pred=lr_reg.predict(X_test)
+
+#테스트 데이터 세트의 Target 값은 로그 변환됐으므로 다시 expm1을 이용해 원래 스케일로 변환
+y_test_exp=np.expm1(y_test)
+
+#예측값 역시 로그 변환된 타깃 기반으로 학습돼 예측됐으므로 다시 expm1로 스케일 변환
+pred_exp=np.expm1(pred)
+
+evaluate_regr(y_test_exp,pred_exp)
+```
+
+[output]
+
+RMSLE:1.017, RMSE:162.594, MAE:109.286
+
+RMSLE 오류는 줄어들었지만, RMSE는 오히려 더 늘어났다.
+
+각 피처의 회귀 계수 값을 시각화해 보자.
+
+```python
+coef=pd.Series(lr_reg.coef_,index=X_features.columns)
+coef_sort=coef.sort_values(ascending=False)
+sns.barplot(x=coef_sort.values,y=coef_sort.index)
+```
+
+[output]
+
+![결과8](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/bb14b088-c421-4a7a-a2d3-5788e585db9d/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210625%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210625T051639Z&X-Amz-Expires=86400&X-Amz-Signature=cef6beb60e885b1fe97699e867b57f05d673b16fefcadf957dd949546ded67bc&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+
+year 피처의 회귀 계수 값이 독보적으로 큰 값을 가지고 있다. year는 2011년, 2012년 두 개의 값으로 되어있는데 이에 따라서 자전거 대여 횟수가 크게 영향을 받는다는 것은 납득하기 어렵다. 그 이유는 year 피처는 연도를 뜻하므로 카테고리형 피처지만, 숫자형 값으로 되어있다. 더군다나 아주 큰 값인 2011,2012으로 되어있다. 이처럼 숫자형 카테고리 값을 선형 회귀에 사용할 경우 회귀 계수를 연산할 때 이 숫자형 값에 크게 영향을 받는 경우가 발생할 수 있다. 따라서 선형 회귀에서는 이러한 피처 인코딩에 원-핫 인코딩을 적용해 변환해야 한다.
+
+판다스의 get_dummies()를 이용해 이러한 year 칼럼을 비롯해 month,day,hour,holiday,workingday,seaeon,weather 칼럼도 모두 원-핫 인코딩한 후에 다시 예측 성능을 확인해 보자.
+
+```python
+X_features_ohe=pd.get_dummies(X_features,columns=['year','month','day','hour','holiday','workingday','season','weather'])
+
+#원-핫 인코딩이 적용된 피처 데이터 세트 기반으로 학습/예측 데이터 분할
+X_train,X_test,y_train,y_test=train_test_split(X_features_ohe,y_target_log,test_size=0.3,random_state=0)
+
+#모델과 학습/테스트 데이터 세트를 입력하면 성능 평가 수치를 반환
+def get_model_predict(model,X_train,X_test,y_train,y_test,is_expm1=False):
+  model.fit(X_train,y_train)
+  pred=model.predict(X_test)
+  if is_expm1:
+    y_test=np.expm1(y_test)
+    pred=np.expm1(pred)
+  print('### ',model.__class__.__name__,' ###')
+  evaluate_regr(y_test,pred)
+
+#모델별로 평가 수행
+lr_reg=LinearRegression()
+ridge_reg=Ridge(alpha=10)
+lasso_reg=Lasso(alpha=0.01)
+
+for model in [lr_reg,ridge_reg,lasso_reg]:
+  get_model_predict(model,X_train,X_test,y_train,y_test,is_expm1=True)
+```
+
+[output]
+
+###  LinearRegression  ###
+RMSLE:0.590, RMSE:97.688, MAE:63.382
+###  Ridge  ###
+RMSLE:0.590, RMSE:98.529, MAE:63.893
+###  Lasso  ###
+RMSLE:0.635, RMSE:113.219, MAE:72.803
+
+원-핫 인코딩을 적용하고 나서 선형 회귀의 예측 성능이 많이 향상되었다. 
+
+원-핫 인코딩된 데이터 세트에서 회귀 계수가 높은 상위 25개의 피처를 추출해 보자.
+
+```python
+coef=pd.Series(lr_reg.coef_,index=X_features_ohe.columns)
+coef_sort=coef.sort_values(ascending=False)[:20]
+sns.barplot(x=coef_sort.values,y=coef_sort.index)
+```
+
+[output]
+
+![결과9](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/5a86b1cc-14fa-4494-b53d-2dd5ce8b435f/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210625%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210625T051756Z&X-Amz-Expires=86400&X-Amz-Signature=d28617cd358a5b38edd1bb40c433a34d3b11453c831ca4937ee30291a8221655&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+
+원-핫 인코딩 시 자전거를 타는 데 필요한 피처의 회귀 계수가 높아졌다.
+
+이번에는 회귀 트리를 이용해 회귀 예측을 수행해 보자. 앞에서 적용한 Target 값의 로그 변환된 값과 원-핫 인코딩된 피처 데이터 세트를 그대로 이용해 랜덤 포레스트, GBM, XGBoost, LightGBM을 순차적으로 성능 평가해 보자.
+
+```python
+from sklearn.ensemble import RandomForestRegressor,GradientBoostingRegressor
+from xgboost import XGBRegressor
+from lightgbm import LGBMRegressor
+
+#랜덤 포레스트, GBM, XGBoost, LightGBM model 별로 평가 수행
+rf_reg=RandomForestRegressor(n_estimators=500)
+gbm_reg=GradientBoostingRegressor(n_estimators=500)
+xgb_reg=XGBRegressor(n_estimators=500)
+lgbm_reg=LGBMRegressor(n_estimators=500)
+
+for model in [rf_reg,gbm_reg,xgb_reg,lgbm_reg]:
+  get_model_predict(model,X_train.values,X_test.values,y_train.values,y_test.values,is_expm1=True)
+```
+
+[output]
+
+###  RandomForestRegressor  ###
+RMSLE:0.355, RMSE:50.174, MAE:31.060
+###  GradientBoostingRegressor  ###
+RMSLE:0.330, RMSE:53.329, MAE:32.738
+###  XGBRegressor  ###
+RMSLE:0.345, RMSE:58.245, MAE:35.768
+###  LGBMRegressor  ###
+RMSLE:0.319, RMSE:47.215, MAE:29.029
+
+앞의 선형 회귀 모델보다 회귀 예측 성능이 향상되었다. 하지만 이것이 회귀 트리가 선형 회귀보다 더 나은 성능을 가진다는 의미는 아니다. 데이터 세트의 유형에 따라 얼마든지 달라질 수 있다.
