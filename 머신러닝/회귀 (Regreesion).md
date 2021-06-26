@@ -173,5 +173,5 @@ alpha가 0또는 매우 작은 값이라면 비용 함수 식은 기존과 동�
 
 ![회귀트리 이미지](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/3f1e4119-00df-4ef8-a158-b6fa4b17abb5/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210622%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210622T124443Z&X-Amz-Expires=86400&X-Amz-Signature=8cfcdd68eecfdd01e46eabd844271c9b0a4f35595b5c5ac5cf1915022d60eee9&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
 
-[회귀 트리를 이용한 보스턴 주택가격 예측](https://www.notion.so/967ceca2832e4ac5a4f30692386e3b84)
+[회귀 트리를 이용한 보스턴 주택가격 예측](https://github.com/JIWON0520/TIL/blob/main/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/%EC%8B%A4%EC%8A%B5/%ED%9A%8C%EA%B7%80/Regression%20Tree%EB%A5%BC%20%EC%9D%B4%EC%9A%A9%ED%95%9C%20%EB%B3%B4%EC%8A%A4%ED%84%B4%20%EC%A3%BC%ED%83%9D%EA%B0%80%EA%B2%A9%20%EC%98%88%EC%B8%A1.md)
 
