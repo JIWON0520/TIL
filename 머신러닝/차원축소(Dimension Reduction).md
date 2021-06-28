@@ -30,7 +30,7 @@
 
     [신용카드 데이터 세트를 이용한 PCA실습](https://www.notion.so/PCA-c314ddff0dd74abfbe85525076ff4c49)
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8acebf62-aa31-4c81-9c97-4c31fac7c9bf/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8acebf62-aa31-4c81-9c97-4c31fac7c9bf/Untitled.png)
+![PCA이미지](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/8acebf62-aa31-4c81-9c97-4c31fac7c9bf/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210628%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210628T144258Z&X-Amz-Expires=86400&X-Amz-Signature=2dcc3a6012a8d7a9271aeb06ad8a9a8a3f2d1ac5e5310ade27340e2fd09b1451&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
 
 ## LDA(Linear Discriminant Analysis)
 
