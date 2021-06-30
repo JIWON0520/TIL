@@ -28,11 +28,11 @@ get_clf_eval(y_test,preds,pred_proba)
 
 [output]
 
-![결과1](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/8a1c973d-41ea-4365-8f8b-d69b63a46ca3/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210608%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210608T151912Z&X-Amz-Expires=86400&X-Amz-Signature=6a9d2fbafc35e08875237eb1a4a2c119d41121d9a6d87002cc2111a2a213e5d7&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+![결과1](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/8a1c973d-41ea-4365-8f8b-d69b63a46ca3/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210630%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210630T121759Z&X-Amz-Expires=86400&X-Amz-Signature=01669c3fe4b9b8cda9a24ad32812a74d16c13f243c4c82f6f3db70a0459fea35&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
 
 .....
 
-![결과2](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/fadf7c30-bf96-4ba3-bade-f02c8aa2b16f/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210608%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210608T151953Z&X-Amz-Expires=86400&X-Amz-Signature=5b0d127c12bd70609b26b86e234c4ce1b5e8d4dc990dd3d850f118cc9d9d3ecb&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+![결과2](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/fadf7c30-bf96-4ba3-bade-f02c8aa2b16f/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210630%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210630T121813Z&X-Amz-Expires=86400&X-Amz-Signature=f5b0cad60cfbdd86d955e2367b5d489418ca93afcfde7cda32b1a0fb5d6be47f&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
 
 조기 중단으로 186번 반복까지만 수행하고 학습을 종료했다. 정확도는 97.37%가 나왔다.
 
@@ -50,4 +50,4 @@ plot_importance(lgbm_wrapper,ax=ax)
 
 [output]
 
-![결과3](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/7dde6f9f-8b36-40b3-879d-b07a44c7e4ed/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210608%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210608T152023Z&X-Amz-Expires=86400&X-Amz-Signature=906553796b90de7aad9655c344971273ac0e3b057d7d1b7d51cb849c5fc9e4cf&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+![결과3](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/7dde6f9f-8b36-40b3-879d-b07a44c7e4ed/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210630%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210630T121851Z&X-Amz-Expires=86400&X-Amz-Signature=e9f08ebfdb05e31c74986269118dfd28d562f9cbbfef0c6411b62c65312b732a&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
