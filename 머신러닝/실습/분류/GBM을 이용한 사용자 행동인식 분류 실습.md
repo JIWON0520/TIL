@@ -28,7 +28,7 @@ print("GBM 수행시간:{0:.1f}초".format(time.time()-start_time))
 
 [output]
 
-![결과1](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/73449749-aec1-4011-80b8-7ba3f1194fd3/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210608%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210608T150103Z&X-Amz-Expires=86400&X-Amz-Signature=e0978c75d8c92466f6cc4efef9d37fd4d01a50232bc1e3af6aea81a922bb5ea4&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+![결과1](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/73449749-aec1-4011-80b8-7ba3f1194fd3/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210630%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210630T121635Z&X-Amz-Expires=86400&X-Amz-Signature=b33be4f3f7002f0c0a4956cc2b028f4dc9eba4beba2c503942a67d57aa4c18b0&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
 
 기본 하이퍼 파라미터만으로 93.89%의 예측 정확도로 앞의 랜덤 포레스트보다 나은 예측 성능을 나타냈다. 그렇지 않은 경우도 있겠지만, 일반적으로 GBM이 랜덤 포레스트보다는 예측 성능이 조금 뛰어난 경우가 많다. 그러나 수행시간이 오래 걸리고, 하이퍼 파라미터 튜닝 노력도 필요하다. 위의 코드를 실행하고 결과도출까지 10분이 걸렸다...
 
@@ -50,7 +50,7 @@ print('최고 예측 정확도:{0:.4f}'.format(grid_cv.best_score_))
 
 [output]
 
-![결과2](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/6f8da5c8-9d4b-49f5-be52-42f8dae30f11/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210608%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210608T150137Z&X-Amz-Expires=86400&X-Amz-Signature=618b97ef957b65e7d41053c9145d4a014e57ae35c06bf761564d0dfb42a521f6&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+![결과2](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/6f8da5c8-9d4b-49f5-be52-42f8dae30f11/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210630%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210630T121659Z&X-Amz-Expires=86400&X-Amz-Signature=59425242b6345555be790d833c933a4185c0d1faca1f0df90ef3fc67033f4767&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
 
 learning_rate가 0.1, n_estimators가 500일때 2개의 교차 검증 세트에서 90.11%의 정확도가 최고로 도출되었다. 이 설정을 그대로 테스트 데이터 세트에 적용해 예측 정확도를 확인해 보자
 
@@ -61,6 +61,6 @@ gb_accuracy=accuracy_score(y_test,gb_pred)
 print('GBM 정확도:{0:.4f}'.format(gb_accuracy))
 ```
 
-![결과3](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/ee7ab7a1-9522-495b-9a5d-0b45423f74dc/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210608%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210608T150213Z&X-Amz-Expires=86400&X-Amz-Signature=8e735e3412ce073b93ef753f0a4a4f10a648d2837840b11f5c748ff3b97ef370&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+![결과3](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/ee7ab7a1-9522-495b-9a5d-0b45423f74dc/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210630%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210630T121725Z&X-Amz-Expires=86400&X-Amz-Signature=557a3492d0885fcbc7179e4fb9bcee0177b8546f10085e23e8dee43dc4cbff73&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
 
 테스트 데이터 세트에서 약 94.20%의 정확도가 나왔다.
