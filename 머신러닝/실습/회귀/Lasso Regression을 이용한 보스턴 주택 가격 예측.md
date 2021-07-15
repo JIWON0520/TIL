@@ -29,7 +29,7 @@ coeff_df.sort_values(by=sort_column,ascending=False)
 
 [output]
 
-![결과](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/c07265ed-197d-4919-acb6-0c9d9ec762bd/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210619%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210619T095402Z&X-Amz-Expires=86400&X-Amz-Signature=9ace15ed6e6bd351f52a58be4f5f5156ac4f9634e68e5f1320858e56e63bb40f&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+![결과1](https://user-images.githubusercontent.com/77263283/125778215-564a3e90-b57e-41cc-b4c4-7c0a32e5216e.png)
 
 alpha의 값이 0.07일 때 평균 RMSE 값이 5.612로 가장 낮게 나타났다.
 
