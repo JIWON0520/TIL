@@ -24,7 +24,7 @@ coeff_df.sort_values(by=sort_column,ascending=False)
 
 [output]
 
-![결과](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/80be9dc3-9437-4ae6-8cc9-5ba79aaf2964/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210622%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210622T123843Z&X-Amz-Expires=86400&X-Amz-Signature=4b0f4a77e74e9bb648706fea5353a7aee2873aed0c842b9641dc5cfb033630c4&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+![결과1](https://user-images.githubusercontent.com/77263283/125778045-a2da36fa-0763-4c35-b0f0-5ccff3104031.png)
 
 alpha가 0.5일 때 평균 RMSE가 5.467로 가장 좋은 예측 성능을 보이고 있다.
 
