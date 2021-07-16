@@ -19,7 +19,7 @@ print('변환된 2차 다항식 계수 피처:\n',poly_ftr)
 
 [output]
 
-![결과1](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/c7afe004-2081-4432-a942-db245c2ecaeb/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210617%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210617T103013Z&X-Amz-Expires=86400&X-Amz-Signature=1ef420bffdabefcb90fd7a7858e9515f9a26be1da1048314b8f2f4ebc3f3e609&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+![결과1](https://user-images.githubusercontent.com/77263283/125933864-e4244ff8-f8a6-4122-b083-d7ff037c0bce.png)
 
 단항 계수 피처[x1,x2]를 2차 다항계수 [1,x1,x2,x1^2,x1x2,x2^2]로 변경하므로 첫 번째 입력 단항 계수 피처 [x1=0, x2=1]은 [1,x1=0,x2=1,x1^2=0,x1x2=0,x2^2=1] 형태인 [1,0,1,0,0,1]로 변환된다. 이렇게 변환된 Polynomial 피처에 선형 회귀를 적용해 다항 회귀를 구현한다. 
 
@@ -38,7 +38,7 @@ print('삼차 다항식 계수 결정값:\n',y)
 
 [output]
 
-![결과2](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/6b00174b-860b-42c3-b38a-81759fb38996/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210617%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210617T103840Z&X-Amz-Expires=86400&X-Amz-Signature=68294dbb666b155fc7d9229bf08ead01a8960e0a8c9814651f5ffb1ac59c3e75&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+![결과2](https://user-images.githubusercontent.com/77263283/125933880-e1e0de7b-a679-4f36-afb7-99cf515c2a86.png)
 
 이제 일차 단항식 계수를 삼차 다항식 계수로 변환하고, 이를 선형 회귀에 적용하면 다항 회귀로 구현된다.
 
@@ -57,6 +57,6 @@ print('Polynomial 회귀 Shape \n',model.coef_.shape)
 
 [output]
 
-![결과3](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/fc7d6b0d-b2d0-4442-8d69-e7355788b157/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210617%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210617T103904Z&X-Amz-Expires=86400&X-Amz-Signature=1aa385c9608f11463ea8dc90061aee16af4abd8410488b8864602e62ba09a9d1&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+![결과3](https://user-images.githubusercontent.com/77263283/125933889-1101010d-b8e0-4940-8502-2f0380d33ea8.png)
 
 일차 단항식 계수는 2개 였지만, 3차 다항식 Polynomial변환 이후에는 다항식 계수 피처가 10개로 늘어난다. 이 피처 데이터 세트에 LinearRegression을 통해 3차 다항 회귀 형태의 다항 회귀를 적용하면 회귀 계수가 10개로 늘어난다. 회귀 계수 [0. 0.18 0.18 0.36 0.54 0.72 0.72 1.08 1.62 2.34]가 도출 되었으며, 실제 회귀 계수 값인 [1,2,0,3,0,0,0,0,0,4]와는 차이가 있지만 다항 회귀로 근사하고 있음을 알 수 있다.
