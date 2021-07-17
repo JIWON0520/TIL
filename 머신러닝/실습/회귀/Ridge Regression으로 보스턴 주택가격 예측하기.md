@@ -18,8 +18,7 @@ print('5 folds의 평균 RMSE: {0:.3f}'.format(avg_rmse))
 
 [output]
 
-![결과1](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/748ed3f3-aa5d-44e8-a964-45b1651c7ba8/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210619%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210619T094658Z&X-Amz-Expires=86400&X-Amz-Signature=ccda8cdd2d323b277bbdc221798d43bcf8657ea65c92f90561db0494f426dd8e&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
-
+![결과1](https://user-images.githubusercontent.com/77263283/126025367-0c521f8e-a93d-4ffe-86c2-d7839987af3a.png)
 릿지의 5개 폴드세트 검증에서 평균RMSE가 5.518입니다. 앞 예제의 규제가 없는 LinearRegression의 RMSE 평균인 5.82보다 더 뛰어난 예측 성능을 보여준다.
 
 이번에는 릿지의 alpha값을 변화시키면서  RMSE와 회귀계수를 시각화하고 DataFrame에 저장해 보자.
@@ -40,7 +39,7 @@ for alpha in alphas:
 
 [output]
 
-![결과2](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/84ec0dbd-7601-4ea9-b591-1df189254ce9/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210619%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210619T094809Z&X-Amz-Expires=86400&X-Amz-Signature=6fd55d84d24af4df6b5f7ca7d550076c9bcb1a80a62a7c59cb21f79d60fce6cf&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+![결과2](https://user-images.githubusercontent.com/77263283/126025371-5e84779a-4df8-43ab-80ed-9ebe6f8ea695.png)
 
 alpha가 100일 때 RMSE가 5.330으로 가장 좋다.
 
@@ -70,8 +69,7 @@ plt.show()
 
 [output]
 
-![결과3](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/cc79eaaa-026c-479a-aea1-c79945d0b520/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210619%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210619T094948Z&X-Amz-Expires=86400&X-Amz-Signature=996f156c9c2b90a671574a6c0dfebbf1ce38042aea7217243ab31d157b5d4620&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
-
+![결과3](https://user-images.githubusercontent.com/77263283/126025373-e67d2ebe-beea-4000-819d-28a466c433e5.png)
 alpha 값을 계속 증가 시킬수록 회귀 계수 값은 지속적으로 작아짐을 알 수 있다. 특히 NOX의 경우 alpha값을 계속 증가시킴에 따라 회귀 계수가 크게 작아지고 있다.
 
 DataFrame에 저장된 alpha값의 변화에 따른 릿지 회귀 계수 값을 구해 보자.
@@ -84,6 +82,5 @@ coeff_df.sort_values(by=sort_column,ascending=False)
 
 [output]
 
-![결과4](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/b444ea6f-13ce-4c39-b188-938c1e80d445/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210619%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210619T095000Z&X-Amz-Expires=86400&X-Amz-Signature=c4b0f048bcd737a127f7e1b22d29b573d5802731cdcb76bb7f8bc93655689440&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
-
+![결과4](https://user-images.githubusercontent.com/77263283/126025376-59fd25ca-7485-4324-8697-cd44fc197f61.png)
 alpha 값이 증가하면서 회귀 계수가 지속적으로 작아지고 있음을 알 수 있다. 하지만 릿지 회귀의 경우에는 회귀 계수를 0으로 만들지는 않는다.
