@@ -43,7 +43,7 @@
     3. 고유값이 가장 큰 순으로 K개(LDA변환 차수만큼) 추출한다.
     4. 고유값이 가장 큰 순으로 추출된 고유벡터를 이용해 새롭게 입력 데이터를 변환한다.
 
-[붓꽃 데이터 세트를 이용한 LDA실습](https://www.notion.so/LDA-6c960efaf3f44efd911589af69a6962b)
+[붓꽃 데이터 세트를 이용한 LDA실습](https://github.com/JIWON0520/TIL/blob/main/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/%EC%8B%A4%EC%8A%B5/%EC%B0%A8%EC%9B%90%20%EC%B6%95%EC%86%8C/%EB%B6%93%EA%BD%83%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EC%84%B8%ED%8A%B8%EB%A5%BC%20%EC%9D%B4%EC%9A%A9%ED%95%9C%20LDA%EC%8B%A4%EC%8A%B5.md)
 
 ![LDA이미지](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/e7364c1f-6dbc-4b91-96fb-db810abb2015/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210717%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210717T043038Z&X-Amz-Expires=86400&X-Amz-Signature=b0483895d34e9d49a0ab13722dd43ef84f30986418ca42a63fd474765f43c60a&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
 
@@ -60,7 +60,7 @@
 - SVD는 A의 차원이 m X n일 때, U의 차원이 m X m, Σ 차원이 m X n, Vt의 자원이 n X n으로 분해한다.
 - Truncated SVD는 Σ의 대각원소 중에 상위 몇개만 추출해서 여기에 대응하는 U와 V의 원소도 함께 제거해 더욱 차원을 줄인 형태로 분해하는 것이다.
 
-    [SVD실습](https://www.notion.so/SVD-65767852e0ce4053857bff6a6c7c6d70)
+    [SVD실습](https://github.com/JIWON0520/TIL/blob/main/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/%EC%8B%A4%EC%8A%B5/%EC%B0%A8%EC%9B%90%20%EC%B6%95%EC%86%8C/SVD%EC%8B%A4%EC%8A%B5.md)
 
     [붓꽃 데이터 세트를 이용한 Truncated SVD 실습](https://www.notion.so/Truncated-SVD-3e2df29b0cda4c1a87ace5ba4fbafc4a)
 
@@ -75,4 +75,4 @@
 - 분해 행렬 W는 원본 행에 대해서 이 잠재 요소의 값이 얼마나 되는지에 대응하며, 분해 행렬 H는 이 잠재 요소가 원본 열로 어떻게 구성됐는지를 나타내는 행렬이다.
 - NMF는 SVD와 유사하게 차원 축소를 통한 잠재 요소 도출로 이미지 변환 및 압축, 텍스트의 토픽 도출 등의 영역에서 사용되고 있다.
 
-[차원축소 실습](https://www.notion.so/0674f08d2b66448e97068fd5d008a7f7)
+[NMF 차원축소 실습](https://www.notion.so/0674f08d2b66448e97068fd5d008a7f7)
