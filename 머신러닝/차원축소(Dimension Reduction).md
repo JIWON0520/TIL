@@ -62,7 +62,7 @@
 
     [SVD실습](https://github.com/JIWON0520/TIL/blob/main/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/%EC%8B%A4%EC%8A%B5/%EC%B0%A8%EC%9B%90%20%EC%B6%95%EC%86%8C/SVD%EC%8B%A4%EC%8A%B5.md)
 
-    [붓꽃 데이터 세트를 이용한 Truncated SVD 실습](https://www.notion.so/Truncated-SVD-3e2df29b0cda4c1a87ace5ba4fbafc4a)
+    [붓꽃 데이터 세트를 이용한 Truncated SVD 실습](https://github.com/JIWON0520/TIL/blob/main/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/%EC%8B%A4%EC%8A%B5/%EC%B0%A8%EC%9B%90%20%EC%B6%95%EC%86%8C/%EB%B6%93%EA%BD%83%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EC%84%B8%ED%8A%B8%EB%A5%BC%20%EC%9D%B4%EC%9A%A9%ED%95%9C%20Truncated%20SVD%20%EC%8B%A4%EC%8A%B5.md)
 
 ## NMF(Non-Negative Matrix Factorization)
 
@@ -75,4 +75,4 @@
 - 분해 행렬 W는 원본 행에 대해서 이 잠재 요소의 값이 얼마나 되는지에 대응하며, 분해 행렬 H는 이 잠재 요소가 원본 열로 어떻게 구성됐는지를 나타내는 행렬이다.
 - NMF는 SVD와 유사하게 차원 축소를 통한 잠재 요소 도출로 이미지 변환 및 압축, 텍스트의 토픽 도출 등의 영역에서 사용되고 있다.
 
-[NMF 차원축소 실습](https://www.notion.so/0674f08d2b66448e97068fd5d008a7f7)
+[NMF 차원축소 실습](https://github.com/JIWON0520/TIL/blob/main/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/%EC%8B%A4%EC%8A%B5/%EC%B0%A8%EC%9B%90%20%EC%B6%95%EC%86%8C/%EB%B6%93%EA%BD%83%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EC%84%B8%ED%8A%B8%EB%A5%BC%20%EC%9D%B4%EC%9A%A9%ED%95%9C%20NMF%EC%8B%A4%EC%8A%B5.md)
