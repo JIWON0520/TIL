@@ -80,6 +80,8 @@ ReLU함수는 입력의 정규화가 필요없다. 하지만 지역 정규화(LR
 
 주변 커널의 활성값을 더한뒤, 파라미터 α를 곱하고 k를 더해준 값을 분모로하여 정규화한다.
 
+본 논문의 모델에서는 이 loal response nomalization을 특정 laer에서 ReLU함수뒤에 배치한다.
+
 이 LRN은 top-1,top-5 오류율을 1.4%,1.2% 줄여주었다.
 
 ### 3.4 Overlapping Pooling
